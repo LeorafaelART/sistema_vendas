@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <!-- DEFINE OS CHAR USADO PELA PÁGINA -->
+        <meta charset="UTF-8">
+
+        <!-- FAZ A PAGINA SE ADAPTAR A DIFERENTES TIPOS DE TELA-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- TITULO EXIBIDO NA ABA DO NAVEGADOR-->
+        <title>Login | Sistema de Vendas</title>
+    </head>
+
+    <body>
+        <!-- TÍTULO TEMPORÁRIO DA PAGINA -->
+        <h1>Login</h1>
+
+        <!-- FORMULARIO USA POST POIS ESTOU ENVIADNDO DADOS PARA O SERVIDOR -->
+        <form method="POST">
+            <!-- 
+                PROTEÇÃO OBRIGATORIA DO DJANGO CONTRA ATAQUES CSRF
+                TODO POST DEVE UTILIZAR {% csrf_token %}
+            -->
+
+            {% csrf_token %}
+            <!-- CAMPO NOME DO USUÁRIO -->
+            <div>
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <!-- CAMPO DA SENHA -->
+            <div>
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <!-- ENVIA O FORMULARIO PARA A ROTA /LOGIN -->
+            <button type="submit">Entrar</button>
+        </form>
+
+        <!-- Se a view enviar a variavel "erro" exibe a mensagem -->
+        {% if erro %}
+            <p>{{ erro }}</p>
+        {% endif %}
+    </body>
+</html>

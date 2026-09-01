@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home | Sistema de Vendas</title>
+    </head>
+
+    <h1>Sistema de Vendas</h1>
+    <!--
+        request.user representa o usuario atualmente autenticado.
+        username é herdado do AbstractUser. 
+    -->
+    <p> Bem-Vindo, {{ request.user.username }} </p>
+    <p>
+        Grupos:
+        {% for grupo in grupos %}
+            {{ grupo }}
+        {% empty %}
+            Nenhum grupo definido
+        {% endfor %}
+    </p>
+    <a href="{% url 'logout' %}">Sair</a>
+</html>

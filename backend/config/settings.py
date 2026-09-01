@@ -123,6 +123,7 @@ INSTALLED_APPS = [
 
     # App responsável pelos usuários do Sistema de Vendas.
     "usuarios",
+    "produtos",
 ]
 
 #########################################################################################
@@ -261,6 +262,7 @@ STATIC_URL = "static/"
 # USUÁRIO PERSONALIZADO
 #########################################################################################
 
+
 # Informa ao Django que não utilizaremos diretamente
 # o modelo de usuário padrão.
 #
@@ -270,3 +272,12 @@ STATIC_URL = "static/"
 # Formato:
 # "nome_do_app.NomeDaClasse"
 AUTH_USER_MODEL = "usuarios.Usuario"
+
+#########################################################################################
+# CONFIGURAÇÕES DE LOGIN
+#########################################################################################
+
+# Define para qual rota o Django deve redirecionar
+# um usuário que tentar acessar uma página protegida
+# sem estar autenticado.
+LOGIN_URL = "login"

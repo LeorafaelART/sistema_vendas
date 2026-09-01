@@ -1,22 +1,28 @@
-"""
-URL configuration for config project.
+#########################################################################################
+# IMPORTS
+#########################################################################################
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+# import padrão admin django
 from django.contrib import admin
-from django.urls import path
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
+# include que permite carregar as URLs de outros apps
+# Path 
+from django.urls import include, path
+
+#########################################################################################
+# ROTAS PRINCIPAIS DO PROJETO
+#########################################################################################
+
+urlpatterns= [
+    # Painel administrativo
+    path("admin/", admin.site.urls),
+
+    # Inclui as rotas do app usuarios.
+    # Deixando o prefixo vazio ""
+    # vai puxar por padrão a rota defina em usuarios/urls.py
+    # "/login"
+    # http://127.0.0.1:8000/login/
+
+    path("", include("usuarios.urls")),
+
 ]
